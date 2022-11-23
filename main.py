@@ -5,29 +5,31 @@ from random import random
 win=Tk()
 win.configure(bg="light slate gray")
 num = int(100*random())
-# flag = 0
-win.geometry("300x150")
+global count
+count=0
+win.geometry("350x150")
 
 def cal_sum():
+    global count
     x=int(a.get())
 
-    if(flag==10):
+    if(count==10):
         label.config(text="You Lost :-( :-(")
         a.delete(first=0, last=END)
     
     if(x==num):
-        label.config(text=f"Congo!! You won :-) :-)\nYou completed the game in {flag} gussess.")
+        label.config(text=f"Congo!! You won :-) :-)\nYou completed the game in {count} gussess.")
         a.delete(first=0, last=END)
         
     elif (x > num):
         label.config(text="The number you entered is greater.")
         a.delete(first=0, last=END)
-        flag += 1
+        count += 1
 
     elif (x < num):
         label.config(text="The number you entered is smaller")
         a.delete(first=0, last=END)
-        flag += 1
+        count += 1
 
 Label(win, text="Enter Number", font=('Calibri 10'), bg="misty rose").pack()
 a=Entry(win, width=35)
